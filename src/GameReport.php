@@ -73,7 +73,7 @@ class GameReport
                 ->groupBy($platformInfo->round_name)
                 ->orderBy($platformInfo->primary_key, 'desc');
         } else {
-            if ($platformInfo->Datetime_name === '' and $platformInfo->Unixtime_name === '') { //時間參數沒有datetime格式，但有unixtime
+            if ($platformInfo->Datetime_name === '' and $platformInfo->Unixtime_name !== '') { //時間參數沒有datetime格式，但有unixtime
                 $m = DB::table($platformInfo->bet_log_name)
                     ->select(DB::raw("MAX($platformInfo->bet_log_name.$platformInfo->primary_key), '$platformInfo->platform' as platform, '$this->memberInfoMemId' as memId, $platformInfo->round_name as round_id, $platformInfo->sum_bet_order as bet, $platformInfo->sum_win_order as net_win, FROM_UNIXTIME($platformInfo->Unixtime_name) as settle_time"))
                     ->when($platformInfo->excluding_canceled, function ($query) use ($platformInfo) {
