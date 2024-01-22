@@ -4,7 +4,7 @@ namespace game\report\platform;
 
 use game\report\PlatformInterface;
 
-class DgPlatform implements PlatformInterface
+class AgPlatform implements PlatformInterface
 {
     public function getUseBuffer(): int
     {

@@ -4,7 +4,7 @@ namespace game\report\platform;
 
 use game\report\PlatformInterface;
 
-class PDnaslotPlatform implements PlatformInterface
+class DnaslotPlatform implements PlatformInterface
 {
     public function getUseBuffer(): int
     {
