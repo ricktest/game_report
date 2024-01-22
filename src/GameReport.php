@@ -107,7 +107,7 @@ class GameReport
 
     public function createPlatform()
     {
-        $platformClassName = 'game\\report\\' . ucfirst(strtolower($this->platform)) . 'Platform';
+        $platformClassName = 'game\\report\\platform\\' . ucfirst(strtolower($this->platform)) . 'Platform';
         return new $platformClassName;
     }
 }
