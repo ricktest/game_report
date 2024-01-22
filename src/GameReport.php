@@ -17,7 +17,7 @@ class GameReport
 
     public function __construct($currency, $platform, $memberInfoIUid, $memberInfoMemId, $sDate, $eDate, $limit = 20, $page = 1)
     {
-        $this->currency = $currency;
+        $this->currency = strtolower($currency);
         $this->platform = $platform;
         $this->memberInfoIUid = $memberInfoIUid;
         $this->memberInfoMemId = $memberInfoMemId;
@@ -34,8 +34,8 @@ class GameReport
             'use_buffer' => $PlatformInterface->getUseBuffer(),
             'uid_name' => $PlatformInterface->getUidName(),
             'primary_key' => $PlatformInterface->getPrimaryKey(),
-            'bet_log_name' => $PlatformInterface->getBetLogName($this->currency, $this->platform),
-            'report_name' => $PlatformInterface->getReportName($this->currency, $this->platform),
+            'bet_log_name' => $PlatformInterface->getBetLogName(strtolower($this->currency), strtolower($this->platform)),
+            'report_name' => $PlatformInterface->getReportName(strtolower($this->currency), strtolower($this->platform)),
             'sum_bet_order' => $PlatformInterface->getSumBetOrder(),
             'sum_win_order' => $PlatformInterface->getSumWinOrder(),
             'excluding_canceled' => $PlatformInterface->getExcludingCanceled(),

@@ -1,10 +1,10 @@
 <?php
 
-namespace game\report;
+namespace game\report\platform;
 
 use game\report\PlatformInterface;
 
-class PgPlatform implements PlatformInterface
+class PngPlatform implements PlatformInterface
 {
     public function getUseBuffer(): int
     {
@@ -33,31 +33,31 @@ class PgPlatform implements PlatformInterface
     public function getReportName($currency, $platform): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return "";
     }
 
     public function getSumBetOrder(): string
     {
         // 實現返回字串的邏輯
-        return "SUM(bet_amount)";
+        return "SUM(TotalLoss)";
     }
 
     public function getSumWinOrder(): string
     {
         // 實現返回字串的邏輯
-        return 'SUM(win_amount)-SUM(bet_amount)';
+        return "SUM(winOrLoss)";
     }
 
     public function getExcludingCanceled(): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return " action='release' AND NumRounds!=''";
     }
 
     public function getDatetimeName(): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return 'betTime';
     }
 
     public function getDatetimeTimezone(): string
@@ -69,18 +69,18 @@ class PgPlatform implements PlatformInterface
     public function getUnixtimeName(): string
     {
         // 實現返回字串的邏輯
-        return 'ts_tf';
+        return 'betTimeUnix';
     }
 
     public function getRoundName(): string
     {
         // 實現返回字串的邏輯
-        return 'parent_bet_id';
+        return 'GamesessionId';
     }
 
     public function getOrderName(): string
     {
         // 實現返回字串的邏輯
-        return 'bet_id';
+        return 'transactionId';
     }
 }

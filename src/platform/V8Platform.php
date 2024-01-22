@@ -1,10 +1,10 @@
 <?php
 
-namespace game\report;
+namespace game\report\platform;
 
 use game\report\PlatformInterface;
 
-class WmPlatform implements PlatformInterface
+class V8Platform implements PlatformInterface
 {
     public function getUseBuffer(): int
     {
@@ -15,13 +15,13 @@ class WmPlatform implements PlatformInterface
     public function getUidName(): string
     {
         // 實現返回字串的邏輯
-        return 'uid';
+        return 'memId';
     }
 
     public function getPrimaryKey(): string
     {
         // 實現返回整數的邏輯
-        return 'id';
+        return 'uid';
     }
 
     public function getBetLogName($currency, $platform): string
@@ -33,31 +33,31 @@ class WmPlatform implements PlatformInterface
     public function getReportName($currency, $platform): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return "";
     }
 
     public function getSumBetOrder(): string
     {
         // 實現返回字串的邏輯
-        return "sum(case when CODE = '2' then -money ELSE 0 END)";
+        return "SUM(CASE WHEN type = '1002' THEN amount ELSE 0 END)";
     }
 
     public function getSumWinOrder(): string
     {
         // 實現返回字串的邏輯
-        return 'SUM(money)';
+        return "SUM(CASE WHEN type = '1003' THEN amount ELSE 0 END) - SUM(CASE WHEN type = '1002' THEN amount ELSE 0 END)";
     }
 
     public function getExcludingCanceled(): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return "STATUS = 0";
     }
 
     public function getDatetimeName(): string
     {
         // 實現返回字串的邏輯
-        return 'requestDate';
+        return 'create_date';
     }
 
     public function getDatetimeTimezone(): string
@@ -69,18 +69,18 @@ class WmPlatform implements PlatformInterface
     public function getUnixtimeName(): string
     {
         // 實現返回字串的邏輯
-        return '';
+        return 'create_unix';
     }
 
     public function getRoundName(): string
     {
         // 實現返回字串的邏輯
-        return 'gameno';
+        return 'game_no';
     }
 
     public function getOrderName(): string
     {
         // 實現返回字串的邏輯
-        return 'dealid';
+        return 'order_id';
     }
 }
