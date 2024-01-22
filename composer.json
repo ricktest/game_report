@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-       "ws_ky/game_report":"dev-main"
+       "ws_ky/game_report":"dev-master"
     }
 }
