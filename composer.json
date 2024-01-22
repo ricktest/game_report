@@ -1,0 +1,17 @@
+{
+    "name": "ws_ky/game_report",
+    "autoload": {
+        "psr-4": {
+            "game\\report\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ricktest",
+            "email": "t83zxcv@gmail.com"
+        }
+    ],
+    "require": {
+       "ws_ky/game_report":"dev-main"
+    }
+}
