@@ -88,7 +88,7 @@ class GameReport
                     ->orderBy($platformInfo->primary_key, 'desc');
             } elseif ($platformInfo->Datetime_name !== '') { //時間參數有datetime格式
                 $m = DB::table($platformInfo->bet_log_name)
-                    ->select(DB::raw("MAX($platformInfo->bet_log_name.$platformInfo->primary_key), '$platformInfo->platform' as platform, '$this->memberInfoMemId' as memId, $platformInfo->round_name as round_id, $platformInfo->sum_bet_order as bet, $platformInfo->sum_win_order as net_win, GROUP_CONCAT($platformInfo->Datetime_name) as settle_time"))
+                    ->select(DB::raw("MAX($platformInfo->bet_log_name.$platformInfo->primary_key), '$platformInfo->platform' as platform, '$this->memberInfoMemId' as memId, $platformInfo->round_name as round_id, $platformInfo->sum_bet_order as bet, $platformInfo->sum_win_order as net_win, $platformInfo->Datetime_name as settle_time"))
                     ->when($platformInfo->excluding_canceled, function ($query) use ($platformInfo) {
                         return $query->whereRaw($platformInfo->excluding_canceled);
                     })
