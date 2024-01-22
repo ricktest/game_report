@@ -2,7 +2,8 @@
     "name": "ws_ky/game_report",
     "autoload": {
         "psr-4": {
-            "game\\report\\": "src/"
+            "game\\report\\": "src/",
+            "game\\report\\platform\\": "src/platform/"
         }
     },
     "authors": [
