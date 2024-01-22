@@ -107,7 +107,7 @@ class GameReport
 
     public function createPlatform()
     {
-        $platformClassName = $this->platform . 'Platform';
-        return new $platformClassName();
+        $platformClassName = 'game\\report\\' . $this->platform . 'Platform';
+        return new $platformClassName;
     }
 }
